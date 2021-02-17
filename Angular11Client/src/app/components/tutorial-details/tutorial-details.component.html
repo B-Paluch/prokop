@@ -1,9 +1,9 @@
 <div>
   <div *ngIf="currentTutorial.id" class="edit-form">
-    <h4>Tutorial</h4>
+    <h4>Jakiś tam obiekcik, nie zwracaj pan na to uwagi</h4>
     <form>
       <div class="form-group">
-        <label for="title">Title</label>
+        <label for="title">Tytuł</label>
         <input
           type="text"
           class="form-control"
@@ -13,7 +13,7 @@
         />
       </div>
       <div class="form-group">
-        <label for="description">Description</label>
+        <label for="description">Opisik</label>
         <input
           type="text"
           class="form-control"
@@ -25,7 +25,7 @@
 
       <div class="form-group">
         <label><strong>Status:</strong></label>
-        {{ currentTutorial.published ? "Published" : "Pending" }}
+        {{ currentTutorial.published ? "Zatwierdzony" : "Oczekuje na zatwierdzenie" }}
       </div>
     </form>
 
@@ -34,18 +34,18 @@
       *ngIf="currentTutorial.published"
       (click)="updatePublished(false)"
     >
-      UnPublish
+      Jednak nie zatwierdzamy...
     </button>
     <button
       *ngIf="!currentTutorial.published"
       class="badge badge-primary mr-2"
       (click)="updatePublished(true)"
     >
-      Publish
+      Zatwierdźmy to
     </button>
 
     <button class="badge badge-danger mr-2" (click)="deleteTutorial()">
-      Delete
+      Usuń to
     </button>
 
     <button
@@ -53,13 +53,13 @@
       class="badge badge-success mb-2"
       (click)="updateTutorial()"
     >
-      Update
+      Modyfikuj
     </button>
     <p>{{ message }}</p>
   </div>
 
   <div *ngIf="!currentTutorial.id">
     <br />
-    <p>Cannot access this Tutorial...</p>
+    <p>Jesteś zbyt cienki aby się tu dostać...</p>
   </div>
 </div>

@@ -4,7 +4,7 @@
 }
 
 body {
-    background: #000000;
+    background: darkorange;
     color: #ffffff;
     font-family: 'Merriweather', sans-serif;
 }
@@ -20,7 +20,7 @@ p {
 }
 
 .jumbotron {
-    background: #0048CD;
+    background: darkorange;
     color: white;
     text-align: center;
 }
@@ -47,4 +47,28 @@ audio {
 div.caption: {
     float: left;
     clear: both;
+}
+
+.carousel-inner > .carousel-item > img, .carousel-inner > .carousel-item > a > img {
+    display: block;
+    height: auto;
+    line-height: 1;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.card{
+    background: orange;
+}
+
+.btn-link{
+    color: aliceblue;
+}
+
+.bg-primary{
+    background: darkorange;
+}
+
+.jumbotron >ul {
+    list-style-type: none;
 }

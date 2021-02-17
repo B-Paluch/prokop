@@ -4,7 +4,7 @@
       <input
         type="text"
         class="form-control"
-        placeholder="Search by title"
+        placeholder="Wpisz nazwę obiektu"
         [(ngModel)]="title"
       />
       <div class="input-group-append">
@@ -13,7 +13,7 @@
           type="button"
           (click)="searchTitle()"
         >
-          Search
+          Szukaj
         </button>
       </div>
     </div>
@@ -32,32 +32,32 @@
     </ul>
 
     <button class="m-3 btn btn-sm btn-danger" (click)="removeAllTutorials()">
-      Remove All
+      Usuń wszystkie obiekty
     </button>
   </div>
   <div class="col-md-6">
     <div *ngIf="currentTutorial">
-      <h4>Tutorial</h4>
+      <h4>Obiekt</h4>
       <div>
-        <label><strong>Title:</strong></label> {{ currentTutorial.title }}
+        <label><strong>Nazwa:</strong></label> {{ currentTutorial.title }}
       </div>
       <div>
-        <label><strong>Description:</strong></label>
+        <label><strong>Opisik:</strong></label>
         {{ currentTutorial.description }}
       </div>
       <div>
-        <label><strong>Status:</strong></label>
-        {{ currentTutorial.published ? "Published" : "Pending" }}
+        <label><strong>Stan:</strong></label>
+        {{ currentTutorial.published ? "Zatwierdzony" : "Oczekuje na zatwierdzenie" }}
       </div>
 
       <a class="badge badge-warning" routerLink="/tutorials/{{ currentTutorial.id }}">
-        Edit
+        Zmień
       </a>
     </div>
 
     <div *ngIf="!currentTutorial">
       <br />
-      <p>Please click on a Tutorial...</p>
+      <p>Te panie, wybierz coś... Nie mamy całego dnia!</p>
     </div>
   </div>
 </div>

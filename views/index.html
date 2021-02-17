@@ -2,35 +2,48 @@
 <html lang="en">
 
 <head>
-    <title>O rest service</title>
+    <title>REST</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link href="/css/styles.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Merriweather:400,700" rel="stylesheet" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link href="/css/styles.css" rel="stylesheet">
 </head>
 
-<body>
-    <nav class="navbar navbar-dark navbar-static-top navbar-expand-md">
+<body data-spy="scroll" data-target=".navbar" data-offset="1">
+    <nav class="navbar navbar-dark navbar-static-top navbar-expand-md fixed-top">
         <div class="container">
             <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span>
-            </button> <a class="navbar-brand" href="#">serwis RESTful</a>
+            </button> <a class="navbar-brand" href="/">serwis RESTful</a>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav mr-auto">
-                    <li class="active nav-item"><a href="/" onclick="javascript:event.target.port=8081" class="nav-link">Testuj</a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#o">O api</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#dokumentacja">Dokumentacja API</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#footer">Footer</a>
+                    </li>
+                    <li class="nav-item"><a href="/" onclick="javascript:event.target.port=8081" class="nav-link">Sprawdź API</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="jumbotron">
-        <div class="container">
-            <h1>Want to Learn About Sharks?</h1>
-            <p>Are you ready to learn about sharks?</p>
-            <br>
-            <p><a class="btn btn-primary btn-lg"  href=":8081" role="button">Get Shark Info</a>
-            </p>
-        </div>
+    <div class="jumbotron" id="o">
+        <h1 class="display-4">O REST API</h1>
+        <p class="lead">REST(Representational State Transfer) to API definiujące zestaw funkcji które programiści mogą
+         wykorzystać w celu wysyłania żądań i otrzymywania odpowiedzi wykorzystując metody HTTP takie jak GET czy POST</p>
+        <hr class="my-4">
+        <p>API RESTowe może być używane przez każdą stronę lub aplikację niezależnie od tego w jakim języku są napisane
+        ponieważ RESTowe żądania bazują na protokole HTTP natomiast odpowiedź jest zazwyczaj wysyłana w formacie JSON, które
+        są wspierane przez prawie każdy język programowania.</p>
     </div>
+    <h1 class="text-center">REST na szybko</h1>
     <div class="container">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -40,24 +53,21 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img class="d-block w-100" src="..." alt="First slide">
+                    <img class="d-block w-100" src="images/first.jpg" alt="First slide">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>...</h5>
-                        <p>...</p>
+                        <h2>Tak działa rest</h2>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="..." alt="Second slide">
+                    <img class="d-block w-100" src="images/second.jpg" alt="Second slide">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>...</h5>
-                        <p>...</p>
+                        <h2>Najczęściej spotykane kody statusu odpowiedzi</h2>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="..." alt="Third slide">
+                    <img class="d-block w-100" src="images/three.jpg" alt="Third slide">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>...</h5>
-                        <p>...</p>
+                        <h2>Najczęściej wykorzystywane metody</h2>
                     </div>
                 </div>
             </div>
@@ -72,49 +82,230 @@
         </div>
         <div id="accordion">
             <div class="card">
-                <div class="card-header" id="headingOne">
+                <div class="card-header" id="headingOne" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                     <h5 class="mb-0">
                         <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Collapsible Group Item #1
+                            Protokół HTTP
                         </button>
                     </h5>
                 </div>
 
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
                     <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        Internet bazuje na protokole HTTP. Protokół ten pozwala na wysyłanie żądań do serwerów oraz
+                        otrzymywanie odpowiedzi które można wyświetlić w przeglądarce.
                     </div>
                 </div>
             </div>
             <div class="card">
-                <div class="card-header" id="headingTwo">
+                <div class="card-header" id="headingTwo" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                     <h5 class="mb-0">
                         <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Collapsible Group Item #2
+                        Żądanie
                         </button>
                     </h5>
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                     <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        <h3>Żądanie(request) to pakiet wysyłany protokołem HTTP  na który składa się:</h3>
+                        <ul>
+                            <li>Linia żądania</li>
+                            <li>Zero, jeden lub więcej nagłówków</li>
+                            <li>Pusta linia</li>
+                            <li>Opcjonalne ciało żądania</li>
+                        </ul>
                     </div>
                 </div>
             </div>
             <div class="card">
-                <div class="card-header" id="headingThree">
+                <div class="card-header" id="headingTwo-one" data-toggle="collapse" data-target="#collapseTwo-one" aria-expanded="false" aria-controls="collapseTwo-one">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo-one" aria-expanded="false" aria-controls="collapseTwo-one">
+                            Linia żądania
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseTwo-one" class="collapse" aria-labelledby="headingTwo-one" data-parent="#accordion">
+                    <div class="card-body">
+                        <p>Ma linię żądania składają się:Metoda Request-URI HTTP-VERSION CRLF</p>
+                        <p>Metoda zawiera informację dla serwera co należy zrobić z danym żądaniem, co jest celem
+                            lub o jakie zasoby chodzi w danym żądaniu.</p>
+                        <p>Request-URI to jednoznaczny identyfikator zasobów o które należy wykonać żądanie. Wykorzystywane formaty to:<br>
+                        <ul>
+                            <li>*, która oznacza że żądanie nie odnosi się do zasobów, tylko bezpośrednio do serwera</li>
+                            <li>Adres absolutny URI, który zawiera pełny link do zasobów o które serwer jest zapytany.</li>
+                            <li>Ścieżka absolutna, która informuje serwer o położeniu zasobów w odniesieniu do serwera.</li>
+                        </ul>
+                        </p>
+                        <p>HTTP-VERSION to informacja o wersji protokołu HTTP wykorzystywanej przy żądaniu.</p>
+                        <p>CRLF to niewidoczny ciąg dwóch znaków CR i LF które oznaczają koniec linii.</p>
+                        <h4>Przykładowe linie żądań:</h4>
+                        <ul>
+                            <li>OPTIONS * HTTP/1.1</li>
+                            <li>GET http://www.w3.org/pub/WWW/TheProject.html HTTP/1.1</li>
+                            <li>GET /pub/WWW/TheProject.html HTTP/1.1<br>
+                                wtedy w treści nagłówka Host: www.w3.org</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingTwo-three" data-toggle="collapse" data-target="#collapseTwo-three" aria-expanded="false" aria-controls="collapseTwo-three">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo-three" aria-expanded="false" aria-controls="collapseTwo-three">
+                            Nagłówek żądania
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseTwo-three" class="collapse" aria-labelledby="headingTwo-three" data-parent="#accordion">
+                    <div class="card-body">
+                        <p>Nagłówek żądania to pole pakietu pozwalające na przesłanie dodatkowej informacji o żądaniu i
+                            kliencie do serwera. Pola nagłówka modyfikują właściwości żądania. Poniżej przykładowy nagłówek żądania:</p>
+                        <pre>
+                        User-Agent: Mozilla/4.0 (compatible; MSIE5.01; Windows NT)
+                        Host: www.tutorialspoint.com
+                        Accept-Language: en-us
+                        Accept-Encoding: gzip, deflate
+                        Connection: Keep-Alive
+                        </pre>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingTwo-two" data-toggle="collapse" data-target="#collapseTwo-two" aria-expanded="false" aria-controls="collapseTwo-two">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo-two" aria-expanded="false" aria-controls="collapseTwo-two">
+                            Ciało żądania
+                        </button>
+                    </h5>
+                </div>
+                <div id="collapseTwo-two" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div class="card-body">
+                        <p>Ciało żądania zawiera dane przesyłane do serwera w celu przetworzenia przy żądaniu. Przykładowe ciała żądania:</p>
+                        <pre>
+                            licenseID=string&content=string&/paramsXML=string
+                        </pre>
+                        <pre>
+                            &lt;?xml version="1.0" encoding="utf-8"?>
+                            &lt;string xmlns="http://clearforest.com/">string&lt;/string>
+                        </pre>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header" id="headingThree" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                     <h5 class="mb-0">
                         <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                            Collapsible Group Item #3
+                            Odpowiedź
                         </button>
                     </h5>
                 </div>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                     <div class="card-body">
-                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                        <h3><p>Dla API Restowego, serwer w odpowiedzi na żądanie HTTP zwraca odpowiedź zawierającą:</p></h3>
+                        <p>Ciało odpowiedzi, potocznie zwane payloadem. Zwykle w formacie JSON, jest to pakiet zawierający
+                        dane zwracane użytkownikowi. Może to być np. lista projektów testów lub harmonogramów napisanych przez studentów
+                            w ramach projektu z przedmiotu, albo kolejny test na który na 100% się nie przygotowują. Ciało odpowiedzi może być puste.</p>
+                        <p>tzw. Nagłówek zawierający metadane dla żądania. W skład tych metadanych wchodzi dla przykładu kod statusu.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="container">
+        <div class="jumbotron" id="dokumentacja">
+            <h1 class="display-4">DOKUMENTACJA API</h1>
+            <p class="lead">API utworzone na rzecz tego projektu zostało stworzone przy wsparciu backendu ExpressJS,
+                z wykorzystaniem nierelacyjnej bazy danych MongoDB. Frontend został utworzony w AngularJS v11.</p>
+            <p>Backend ExpressJS jest serwowany na porcie 8080, przy czym docker mapuje ten port na port 80 urządzenia.</p>
+            <p>Frontend jest serwowany na porcie 8081.</p>
+            <hr class="my-4">
+            <h3>Endpointy API</h3>
+            <p>Endpointami nazywane jest połączenie metody oraz URI. Powiązujące pewne funkcje i procesy
+                wywoływane na serwerze z danym endpointem. W projekcie utworzono poniższe endpointy:</p>
+            <ul>
+                <li>GET: / | Pobiera poniższą stronę</li>
+                <li>GET:/api/tutorials | Pobiera informacje o wszystkich obiektach. </li>
+                <li>POST:/api/tutorials | Tworzy nowy obiekt.</li>
+                <li>GET:/api/tutorials/:id | Pobiera informacje o obiekcie o podanym id</li>
+                <li>PUT:/api/tutorials/:id | Aktualizuje informacje o obiekcie o podanym id</li>
+                <li>DELETE: /api/tutorials | Usuwa WSZYSTKIE obiekty. Tak, wszystkie.</li>
+                <li>DELETE: /api/tutorials/:id | Usuwa obiekt o podanym id.</li>
+            </ul>
+            <hr class="my-3">
+            <h3>CORS</h3>
+            <p>
+                CORS(Cross-Origin Resource Sharing) to mechanizm nagłówku pakietu HTTP określający jakie hosty mają
+                dostęp do zasobów dla danego serwera. Zapytania pochodzące od obcego hosta są odrzucane.
+            </p>
+            <p>
+                W projekcie wykorzystywane są ustawienia dotyczące CORS dla localhost, na portach 8081 oraz 80.
+            </p>
+        </div>
+    </div>
+    <footer id="footer" class="text-white text-center text-lg-start">
+        <hr class="my-1">
+        <!-- Grid container -->
+        <div class="container p-4">
+            <!--Grid row-->
+            <div class="row">
+                <!--Grid column-->
+                <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">O projekcie</h5>
+                    <p>
+                        Projekt wykonany w ramach przedmiotu TSW.<br>
+                        Wszelkie prawa zastrzeżone na rzecz twórcy i opiekuna.
+                    </p>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase">Twórca</h5>
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            Student:160786
+                        </li>
+                        <li>
+                            Bartłomiej Mateusz Paluch
+                        </li>
+                        <li>
+                            email:jaegerjack16@gmail.com
+                        </li>
+                        <li>
+                            tel:789499225
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+
+                <!--Grid column-->
+                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                    <h5 class="text-uppercase mb-0">Opiekun</h5>
+                    <ul class="list-unstyled">
+                        <li>
+                            dr hab. inż. prof. PRz
+                        </li>
+                        <li>
+                            Jan Stanisław Prokop
+                        </li>
+                        <li>
+                            email:jprokop@prz.edu.pl
+                        </li>
+                        <li>
+                            tel:17 865 1384
+                        </li>
+                    </ul>
+                </div>
+                <!--Grid column-->
+            </div>
+            <!--Grid row-->
+        </div>
+        <!-- Grid container -->
+
+        <div class="text-center p-3" style="background-color: orange">
+            © 2021 Copyright: Paluch Bartłomiej
+        </div>
+    </footer>
   </body>
 </html>
