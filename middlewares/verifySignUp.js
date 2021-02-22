@@ -13,7 +13,7 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
         }
 
         if (user) {
-            res.status(400).send({ message: "Failed! Username is already in use!" });
+            res.status(400).send({ message: "Niestety, Login jest zajęty" });
             return;
         }
 
@@ -27,7 +27,7 @@ checkDuplicateUsernameOrEmail = (req, res, next) => {
             }
 
             if (user) {
-                res.status(400).send({ message: "Failed! Email is already in use!" });
+                res.status(400).send({ message: "Niestety, ten Email jest zajęty!" });
                 return;
             }
 
@@ -41,7 +41,7 @@ checkRolesExisted = (req, res, next) => {
         for (let i = 0; i < req.body.roles.length; i++) {
             if (!ROLES.includes(req.body.roles[i])) {
                 res.status(400).send({
-                    message: `Failed! Role ${req.body.roles[i]} does not exist!`
+                    message: `Rola ${req.body.roles[i]} nie istnieje!`
                 });
                 return;
             }

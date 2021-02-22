@@ -1,0 +1,59 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Wpisz nazwę obiektu"
+        [(ngModel)]="title"
+      />
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchTitle()"
+        >
+          Szukaj
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <h4>Lista Quizów</h4>
+    <ul class="list-group">
+      <li
+        class="list-group-item"
+        *ngFor="let quiz of quizes; let i = index"
+        [class.active]="i == currentIndex"
+        (click)="setActiveQuiz(quiz, i)"
+      >
+        {{ quiz.name }}
+      </li>
+    </ul>
+
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllTutorials()">
+      Usuń wszystkie obiekty
+    </button>
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="currentQuiz">
+      <h4>Obiekt</h4>
+      <div>
+        <label><strong>Nazwa:</strong></label> {{ currentQuiz.name }}
+      </div>
+      <div>
+        <label><strong>Pytania:</strong></label>
+        {{ currentQuiz.questions }}
+      </div>
+
+      <a class="badge badge-warning" routerLink="/tutorials/{{ currentQuiz.id }}">
+        Zmień
+      </a>
+    </div>
+
+    <div *ngIf="!currentQuiz">
+      <br />
+      <p>Te panie, wybierz coś... Nie mamy całego dnia!</p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,75 @@
+<div class="col-md-12">
+  <div class="card card-container">
+    <h1 class="align-content-center">Zaloguj się!</h1>
+    <form
+      *ngIf="!isLoggedIn"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="username">Nazwa Użytkownika</label>
+        <input
+          type="text"
+          class="form-control"
+          name="username"
+          [(ngModel)]="form.username"
+          required
+          #username="ngModel"
+        />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="username.errors && f.submitted"
+        >
+          Nazwa Użytkownika jest wymagana!
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Hasło</label>
+        <input
+          type="password"
+          class="form-control"
+          name="password"
+          [(ngModel)]="form.password"
+          required
+          minlength="6"
+          #password="ngModel"
+        />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="password.errors && f.submitted"
+        >
+          <div *ngIf="password.errors.required">Hasło jest wymagane!</div>
+          <div *ngIf="password.errors.minlength">
+            Zbyt krótkie hasło, minimalna długość hasła to 6.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">
+          Zaloguj
+        </button>
+      </div>
+      <div class="form-group">
+        <div
+          class="alert alert-danger"
+          role="alert"
+          *ngIf="f.submitted && isLoginFailed"
+        >
+          Logowanie nieudane: {{ errorMessage }}
+        </div>
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="isLoggedIn">
+      Zalogowano.
+      Wciśnij przycisk aby przejść do testów.
+      <a class="badge badge-success" routerLink="/home/">
+        Przejdź!
+      </a>
+    </div>
+  </div>
+</div>

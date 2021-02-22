@@ -1,0 +1,29 @@
+<div class="container">
+  <header class="jumbotron">
+    <div *ngIf="isLoggedIn">
+      <div class="col-md-8">
+    <li
+      class="list-group-item"
+      *ngFor="let item of content; let i = index"
+      [class.active]="i == currentIndex"
+      (click)="setActiveQuiz(item, i)"
+    >
+      {{item.name }}
+    </li>
+      </div>
+      <div class="col-md-4">
+      <div *ngIf="currentQuiz">
+        <h4>Obiekt</h4>
+        <div>
+          <label><strong>Test:</strong></label> {{ currentQuiz.name }}
+        </div>
+
+        <a class="badge badge-primary" routerLink="/home/{{ currentQuiz.id }}">
+          Odpal Quiz!
+        </a>
+      </div>
+    </div>
+    </div>
+    <h1 *ngIf="!isLoggedIn">Aby ujrzeć zawartość strony należy się zalogować!</h1>
+  </header>
+</div>

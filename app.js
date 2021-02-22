@@ -1,12 +1,13 @@
 const express = require('express');
 const app = express();
 const router = express.Router();
-const db = require('./db');
-const Role = require('./models/role')
-//const questions = require('./routes/questions');
 const tutorial = require('./routes/tutorial');
+const test = require('./routes/quiz');
 const bodyParser = require("body-parser");
 const cors = require("cors");
+var corsOptions = {
+  origin: ["http://localhost:8081"]
+};
 app.use(cors(corsOptions));
 
 // parse requests of content-type - application/json
@@ -14,24 +15,6 @@ app.use(bodyParser.json());
 
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(function (req, res, next) {
-
-  // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:8081');
-
-  // Request methods you wish to allow
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-  // Request headers you wish to allow
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-  // Set to true if you need the website to include cookies in the requests sent
-  // to the API (e.g. in case you use sessions)
-  res.setHeader('Access-Control-Allow-Credentials', true);
-
-  // Pass to next layer of middleware
-  next();
-});
 
 const path = __dirname + '/views/';
 const port = process.env.PORT || 8080;
@@ -42,16 +25,30 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path));
 //app.use('/pytania', questions);
 app.use('/api/tutorials', tutorial);
+app.use('/api/test', test);
+app.use('/images', express.static( 'images'))
+const auth = require('./routes/auth')(app);
+const user = require('./routes/user')(app);
 
-var corsOptions = {
-  origin: ["http://localhost:8081","localhost"]
+const mongoose = require('mongoose');
+const db = require("./models");
+const Role = db.role;
+
+const {
+  MONGO_USERNAME,
+  MONGO_PASSWORD,
+  MONGO_HOSTNAME,
+  MONGO_PORT,
+  MONGO_DB
+} = process.env;
+
+const options = {
+  useNewUrlParser: true,
+  reconnectTries: Number.MAX_VALUE,
+  reconnectInterval: 500,
+  connectTimeoutMS: 10000,
 };
 
-app.use('/images', express.static( 'images'))
-
-app.listen(port, function () {
-  console.log(`Example app listening on ${port}!`);
-});
 
 function initial() {
   Role.estimatedDocumentCount((err, count) => {
@@ -88,3 +85,20 @@ function initial() {
     }
   });
 }
+
+const url = `mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}:${MONGO_PORT}/${MONGO_DB}?authSource=admin`;
+
+mongoose.connect(url, options).then( function() {
+  console.log('MongoDB is connected');
+})
+    .then(() => {
+      console.log("Successfully connect to MongoDB.");
+      initial();
+    })
+    .catch( function(err) {
+      console.log(err);
+    });
+
+app.listen(port, function () {
+  console.log(`Example app listening on ${port}!`);
+});
