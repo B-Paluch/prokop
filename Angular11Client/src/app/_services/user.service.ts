@@ -16,6 +16,10 @@ export class UserService {
     return this.http.get<Quiz[]>(API_URL);
   }
 
+  get(id: any): Observable<Quiz> {
+    return this.http.get<Quiz>(`${API_URL}/${id}`);
+  }
+
   getUserBoard(): Observable<any> {
     return this.http.get(API_URL + 'user', { responseType: 'text' });
   }

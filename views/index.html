@@ -29,7 +29,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#footer">Footer</a>
                     </li>
-                    <li class="nav-item"><a href="/" onclick="javascript:event.target.port=8081" class="nav-link">Sprawdź API</a></li>
+                    <li class="nav-item"><a href="/" onclick="javascript:event.target.port=8081" class="nav-link">Przejdź do testu!</a></li>
                 </ul>
             </div>
         </div>
@@ -225,12 +225,15 @@
                 wywoływane na serwerze z danym endpointem. W projekcie utworzono poniższe endpointy:</p>
             <ul>
                 <li>GET: / | Pobiera poniższą stronę</li>
+                <h2>Poniższe api są dostępne. nie widoczne dla użytkownika, nie pasuje do tematu "quizu"</h2>
                 <li>GET:/api/tutorials | Pobiera informacje o wszystkich obiektach. </li>
                 <li>POST:/api/tutorials | Tworzy nowy obiekt.</li>
                 <li>GET:/api/tutorials/:id | Pobiera informacje o obiekcie o podanym id</li>
                 <li>PUT:/api/tutorials/:id | Aktualizuje informacje o obiekcie o podanym id</li>
                 <li>DELETE: /api/tutorials | Usuwa WSZYSTKIE obiekty. Tak, wszystkie.</li>
                 <li>DELETE: /api/tutorials/:id | Usuwa obiekt o podanym id.</li>
+                <h1>Powyższe api działa dla testu, zmianą jest /tutorials/ na /test/.</h1>
+                <h1>Dodatkowo dochodzi /api/test/questions/:id pozwalające na usunięcie samego pytania z testu</h1>
             </ul>
             <hr class="my-3">
             <h3>CORS</h3>
@@ -253,7 +256,7 @@
                 <div class="col-lg-6 col-md-12 mb-4 mb-md-0">
                     <h5 class="text-uppercase">O projekcie</h5>
                     <p>
-                        Projekt wykonany w ramach przedmiotu TSW.<br>
+                        Projekt wykonany w ramach przedmiotu TSW.<hr>
                         Wszelkie prawa zastrzeżone na rzecz twórcy i opiekuna.
                     </p>
                 </div>

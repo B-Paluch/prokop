@@ -1,1 +1,64 @@
-<p>quiz-details works!</p>
+<div class="container">
+  <header class="jumbotron">
+    <div *ngIf="isLoggedIn">
+
+      <div *ngIf="!checked">
+        <div class="text-center">
+          <h1>{{currentQuiz.name}}</h1>
+          <hr class="my-3">
+          <ul class="list-inline">
+            <li
+              class="list-group-item list-inline-item"
+              *ngFor="let item of currentQuiz.questions; let i = index"
+              [class.active]="i == currentIndex"
+              (click)="setActiveQuestion(item, i)"
+            >
+              {{ i+1 }}
+            </li>
+          </ul>
+        </div>
+        <div>
+          <form id="testanswers">
+            <div *ngFor="let item of currentQuiz.questions; let i=index">
+              <div *ngIf="item.questiontype == 'single'">
+                <div class="jumbotron" [hidden]="currentQuestion!=item">
+                  <h3><strong> {{ item.title }}</strong>
+                  </h3>
+                  <div *ngFor="let item2 of item.alternatives; let j = index" class="custom-control custom-radio">
+                    <input type="radio" class="custom-control-input" id="{{i}}.{{j}}" name="{{i}}" value="{{j}}">
+                    <label class="custom-control-label" for="{{i}}.{{j}}">{{item2.text}}</label>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="item.questiontype == 'multi'">
+                <div class="jumbotron" [hidden]="currentQuestion!=item">
+                  <h3><strong>{{ item.title }}</strong></h3>
+                  <div *ngFor="let item2 of item.alternatives; let j = index" class="custom-control custom-checkbox">
+                    <input type="checkbox" id="{{i}}.{{j}}" name="{{i}}" class="custom-control-input">
+                    <label class="custom-control-label">{{item2.text}}</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button class="btn-block btn bg-primary" type="submit" (click)="mark()">Sprawdź</button>
+          </form>
+        </div>
+      </div>
+      <div *ngIf="checked">
+        <h1 class="text-center">Quiz ukończony! Uzyskano {{points}} na {{max}} punktów!</h1>
+        <div *ngFor="let item of currentQuiz.questions; let i=index">
+          <h3><strong> {{ item.title }}</strong>
+          </h3>
+          <ul class="list-group">
+              <li class="list-group-item" *ngFor="let item2 of item.alternatives; let j = index"
+                  [ngClass]="{'list-group-item-danger': wrongAnswer(i+'.'+j),
+                              'list-group-item-success':rightAnswer(i+'.'+j)}">
+                <i *ngIf="selectedAnswer(i+'.'+j)" class="fa fa-check-square"></i> {{item2.text}}
+              </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <h1 *ngIf="!isLoggedIn">Aby ujrzeć zawartość strony należy się zalogować!</h1>
+  </header>
+</div>

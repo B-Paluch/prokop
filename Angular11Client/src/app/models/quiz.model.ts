@@ -6,7 +6,7 @@ export class Quiz {
 
 export class Questions{
   title?: String;
-  alternatives?: any;
+  alternatives?: QuestionOption[];
   questiontype? : String;
   id?:any;
 }
